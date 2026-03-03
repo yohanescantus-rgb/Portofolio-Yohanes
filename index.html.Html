@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yohanes Luahambowo | Accountant Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a8a;
+            --accent-orange: #f97316;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --cream: #fef3c7;
+            --gray: #334155;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            padding: 6rem 5% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background: var(--accent-orange);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-title span {
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-status {
+            background: rgba(30, 58, 138, 0.1);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-status h4 {
+            color: var(--primary-blue);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-status p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-dark);
+            color: white;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            height: 600px;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 10%;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .badge-2 {
+            bottom: 20%;
+            right: -20px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(30, 58, 138, 0.1);
+            color: var(--primary-blue);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--dark-bg);
+            color: white;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-content h2 span {
+            color: var(--accent-orange);
+        }
+
+        .about-text {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        /* FOTO ABOUT - object-position: bottom */
+        .about-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            height: 500px;
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--accent-orange);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .experience-badge h3 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .experience-badge p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Education Section */
+        .education {
+            background: white;
+            padding: 6rem 5%;
+        }
+
+        .education-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary-blue), #1e40af);
+            border-radius: 30px;
+            padding: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .education-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .education-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .education-title h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-title p {
+            opacity: 0.9;
+        }
+
+        .education-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .education-content p {
+            line-height: 1.8;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .education-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .edu-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Work Experience */
+        .experience {
+            background: var(--light-bg);
+        }
+
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-orange));
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 6rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            width: 90%;
+            position: relative;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        /* TIMELINE IMAGE - NORMAL (tanpa object-position) */
+        .timeline-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .timeline-body {
+            padding: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--primary-blue);
+            top: 30px;
+        }
+
+        .timeline-date {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .timeline-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: white;
+        }
+
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .skill-card {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag i {
+            color: var(--accent-orange);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .projects .section-title {
+            color: white;
+        }
+
+        .projects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .project-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Certificates Gallery Section */
+        .certificates {
+            background: var(--cream);
+            padding: 6rem 5%;
+        }
+
+        .certificates-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .certificate-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .certificate-card:hover .certificate-image {
+            transform: scale(1.1);
+        }
+
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 58, 138, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-card:hover .certificate-overlay {
+            opacity: 1;
+        }
+
+        .zoom-icon {
+            color: white;
+            font-size: 2.5rem;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-card:hover .zoom-icon {
+            transform: scale(1);
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+        }
+
+        .certificate-date {
+            color: var(--accent-orange);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .certificate-issuer {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-info {
+            color: white;
+            text-align: center;
+            margin-top: 1.5rem;
+            max-width: 600px;
+        }
+
+        .lightbox-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .lightbox-issuer {
+            color: var(--accent-orange);
+            font-size: 1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-orange);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent-orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        /* Achievements List Section */
+        .achievements-list {
+            background: white;
+            padding: 4rem 5%;
+        }
+
+        .achievements-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .achievement-icon-small {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .achievement-content h4 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-content .date {
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark-bg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 50px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Contact Item dengan Link Aktif */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(10px);
+            border-color: var(--accent-orange);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .contact-details p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        .footer-text {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 80px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-dot {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+
+            .lightbox-prev {
+                left: 20px;
+            }
+
+            .lightbox-next {
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-container {
+                padding: 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .hero-status {
+                padding: 1rem;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">YOHANES<span style="color: var(--accent-orange);">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <div class="hero-subtitle">Audit & Financial System Enthusiast</div>
+                <h1 class="hero-title">
+                    Creative
+                    <span>PORTFOLIO</span>
+                </h1>
+                <p class="hero-desc">
+                    Accountant with 1+ year of experience in external audit from two public accounting firms. Currently intern at Employee Cooperative while developing expertise in financial systems and auditing.
+                </p>
+                
+                <div class="hero-status">
+                    <h4><i class="fas fa-briefcase"></i> Current Position</h4>
+                    <p>Finance, Accounting and Tax Intern at KOPKAR PRA dan PURNABAKTI PT UTPE with hands-on experience in tax invoice preparation, tax reporting support, and accounts receivable control to maintain accuracy and compliance in financial processes.</p>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                    <a href="#experience" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Experience
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>1+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>2</h3>
+                        <p>Public Accounting Firms</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Certificates</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <div class="hero-image-container">
+                    <img src="https://lh3.googleusercontent.com/d/1s1IbkTRYZHkkmLwj9b4ZQ6GAEZg3wnkK" alt="Yohanes Luahambowo">
+                </div>
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-calculator" style="color: var(--accent-orange);"></i>
+                    <span>Accountant</span>
+                </div>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-check-circle" style="color: var(--primary-blue);"></i>
+                    <span>Available for Work</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content fade-in">
+                <h2>Hello, <br>I am <span>YOHANES</span></h2>
+                <p class="about-text">
+                    I am an Accountant with experience in external audit, specializing in vouching, preparing working papers, and utilizing ATLAS Audit. Skilled in conducting client inquiries and stock opname.
+                </p>
+                <p class="about-text">
+                    With leadership backgrounds as Chairperson of the village Children's forum and Student Council President, I possess strong public speaking, teamwork, and problem-solving skills that enhance my professional capabilities.
+                </p>
+                <div style="display: flex; gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h4 style="color: var(--accent-orange); font-size: 2rem; font-weight: 800;">6th</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Semester</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-orange); font-size: 2rem; font-weight: 800;">UBSI</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Cikarang Campus</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image fade-in">
+                <div class="about-image-container">
+                    <!-- FOTO ABOUT - object-position: bottom -->
+                    <img src="https://lh3.googleusercontent.com/d/1LWGu-C5AFKlQQfbcJwmjmQwlICxSTLwh" alt="About Yohanes">
+                </div>
+                <div class="experience-badge">
+                    <h3>2024</h3>
+                    <p>Since Active</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="section-header fade-in">
+            <span class="section-tag">Academic</span>
+            <h2 class="section-title">Education Background</h2>
+        </div>
+
+        <div class="education-container fade-in">
+            <div class="education-header">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-title">
+                    <h3>Universitas Bina Sarana Informatika</h3>
+                    <p>Cikarang Campus | Since 2023</p>
+                </div>
+            </div>
+            <div class="education-content">
+                <p>
+                    A 6th-semester undergraduate student majoring in Accounting at UBSI, Cikarang campus since 2023. Throughout my studies, I have participated in training programs, actively engaged in discussions, and volunteered in social and campus activities.
+                </p>
+                <p>
+                    I also continue to develop my skills in auditing, taxation, and accounting software such as Excel and Zahir as preparation for entering the professional world.
+                </p>
+                <div class="education-tags">
+                    <span class="edu-tag"><i class="fas fa-check-circle"></i> Accounting Major</span>
+                    <span class="edu-tag"><i class="fas fa-check-circle"></i> 6th Semester</span>
+                    <span class="edu-tag"><i class="fas fa-check-circle"></i> Active Student</span>
+                    <span class="edu-tag"><i class="fas fa-check-circle"></i> GPA : 3.91</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="experience" id="experience">
+        <div class="section-header fade-in">
+            <span class="section-tag">Career Path</span>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-desc">My professional journey in accounting and auditing with hands-on experience at various organizations</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- KOPKAR PRA - FOTO TERBARU & NORMAL -->
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="https://lh3.googleusercontent.com/d/1uufTokA5qM1F0FII0khkj6CuXEO8Bw9U" alt="KOPKAR PRA" class="timeline-image">
+                    <div class="timeline-body">
+                        <div class="timeline-date">FEB 2026 - PRESENT</div>
+                        <h3 class="timeline-title">Finance, Accounting and Tax Intern</h3>
+                        <div class="timeline-company">KOPKAR PRA dan PURNABAKTI PT UTPE</div>
+                        <p class="timeline-desc">Currently interning at a cooperative, contributing to finance, accounting, and tax activities to support company operations.</p>
+                        <ul class="timeline-list">
+                            <li>Assist in finance, accounting, and tax activities including daily transaction recording</li>
+                            <li>Account reconciliation and supporting month-end closing processes</li>
+                            <li>Support preparation and review of financial reports for accuracy and compliance</li>
+                            <li>Assist in tax administration including VAT data preparation</li>
+                            <li>Coordinate with internal teams to collect supporting documents</li>
+                            <li>Contribute to improving documentation flow and basic internal control</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- KAP A & H - FOTO NORMAL -->
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="https://lh3.googleusercontent.com/d/1uZbPczZe0RGduyUy10foLzUSOleSOvB7" alt="KAP A&H" class="timeline-image">
+                    <div class="timeline-body">
+                        <div class="timeline-date">May 2025 - January 2026</div>
+                        <h3 class="timeline-title">Junior Auditor</h3>
+                        <div class="timeline-company">KAP Alister & Hamonangan (KAP A & H)</div>
+                        <p class="timeline-desc">Conducted external audits with focus on substantive testing and audit procedures for various clients.</p>
+                        <ul class="timeline-list">
+                            <li><strong>Audit Planning:</strong> Understanding client business process and identifying audit risks for key accounts</li>
+                            <li><strong>Substantive Testing:</strong> Performing audit procedures to test accuracy of transactions and balances</li>
+                            <li><strong>Working Paper Preparation:</strong> Compiling and organizing audit working papers systematically for supervisor review</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- KAP WIKA -->
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="https://lh3.googleusercontent.com/d/1XcKCdnd6M1SusuwPUqD_TGm64u1lKq7C" alt="KAP WIKA" class="timeline-image">
+                    <div class="timeline-body">
+                        <div class="timeline-date">Jan 2025 - May 2025</div>
+                        <h3 class="timeline-title">Junior Auditor Intern</h3>
+                        <div class="timeline-company">KAP WIKA Cikarang</div>
+                        <p class="timeline-desc">Contributed to ensuring the reliability of client's financial statements through detailed and systematic audit procedures.</p>
+                        <ul class="timeline-list">
+                            <li><strong>Audit Working Paper & Tools:</strong> Analyzing and preparing working paper for cash and bank to support audit opinion</li>
+                            <li><strong>Vouching:</strong> Tracing transactions back to source documents to verify accuracy</li>
+                            <li><strong>Stock Opname:</strong> Conducting inventory checks to reconcile with accounting records and identify discrepancy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- Freelance -->
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <img src="https://lh3.googleusercontent.com/d/1_zz60jt2XogZnsM9PRPwddLShVRVqsKJ" alt="Freelance" class="timeline-image">
+                    <div class="timeline-body">
+                        <div class="timeline-date">October 2025 - March 2026</div>
+                        <h3 class="timeline-title">Freelance Project</h3>
+                        <div class="timeline-company">CV Arcoma Basco</div>
+                        <p class="timeline-desc">Freelance project in audit and financial document verification.</p>
+                        <ul class="timeline-list">
+                            <li>Conducted vouching and tracing of liabilities transactions to supporting documents</li>
+                            <li>Assisted in reviewing accrued expenses and accounts payable</li>
+                            <li>Prepared and organized audit working papers (WP) 2015-2024</li>
+                            <li>Supported senior auditor in inquiry and issue identification</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="section-header fade-in">
+            <span class="section-tag">Expertise</span>
+            <h2 class="section-title">Personal Skills</h2>
+            <p class="section-desc">Technical and soft skills that I possess</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Hard Skills</h3>
+                </div>
+                <div class="skill-items">
+                    <div class="skill-tag">
+                        <i class="fas fa-file-excel"></i> Microsoft Excel
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-file-word"></i> Microsoft Word
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-calculator"></i> Zahir Accounting
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-paint-brush"></i> Canva
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-database"></i> ATLAS Audit
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-file-invoice"></i> Coretax
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-chart-line"></i> Financial Analysis
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card fade-in">
+                <div class="skill-header">
+                    <div class="skill-icon" style="background: var(--accent-orange);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Soft Skills</h3>
+                </div>
+                <div class="skill-items">
+                    <div class="skill-tag">
+                        <i class="fas fa-microphone"></i> Public Speaking
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-handshake"></i> Leadership & Teamwork
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-clock"></i> Time Management
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-search"></i> Attention to Detail
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-brain"></i> Critical Thinking
+                    </div>
+                    <div class="skill-tag">
+                        <i class="fas fa-comments"></i> Communication
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-header fade-in">
+            <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white;">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-desc" style="color: #94a3b8;">Projects and organizational experiences I have undertaken</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://lh3.googleusercontent.com/d/1FVPQlox2OVqtyXuhF52Yjcoo7i4K_-Ph" alt="CHUBITE - Churros Bite">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Entrepreneurship</span>
+                    <h3 class="project-title">CHUBITE - Churros Bite</h3>
+                    <p class="project-desc">
+                        Part of the Entrepreneurship Fair with our special culinary creation CHURROS BITE. A real-world learning experience in managing a business with marketing strategy and financial management.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://lh3.googleusercontent.com/d/1hqZfktdPwhu89p2gNWEzWX1167LSV9No" alt="Finance Division - Easter Day">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Organization</span>
+                    <h3 class="project-title">Finance Division - Easter Day</h3>
+                    <p class="project-desc">
+                        Managed the financial part of the Easter Day event at youth GPdI El Shaddai. Created General Journal entries, managed income & expenses, and prepared financial reports.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://lh3.googleusercontent.com/d/1BW04vRDm1BnBbjIoZ_6RFV8_ZWTomEkV" alt="Book: Zahir Accounting 6 for Business">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Publication</span>
+                    <h3 class="project-title">Book: Zahir Accounting 6 for Business</h3>
+                    <p class="project-desc">
+                        Co-authored "Zahir Accounting 6 for Business World" - Introducing accounting system based on Zahir application from basic concepts to practical steps in purchasing, sales, and financial reporting modules.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://lh3.googleusercontent.com/d/1cebzAkZtIalNJYZaNdKapOFluw6QKgI3" alt="Student Representative Speaker">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Leadership</span>
+                    <h3 class="project-title">Student Representative Speaker</h3>
+                    <p class="project-desc">
+                        Speaker at "Campus Discussion with Parents" UBSI Cikarang Campus. Shared perspectives on student life, study strategies, and campus involvement to prospective students and parents.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Gallery Section -->
+    <section class="certificates" id="certificates">
+        <div class="section-header fade-in">
+            <span class="section-tag">Gallery</span>
+            <h2 class="section-title">Certificates Gallery</h2>
+            <p class="section-desc">Click on any certificate to view in full size</p>
+        </div>
+
+        <div class="certificates-grid">
+            <div class="certificate-card fade-in" onclick="openLightbox(0)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1pVAyDsFAXNCIg6wCSDWO_xTGeGLp0-2s" alt="Brevet A & B" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">2025</div>
+                    <h4 class="certificate-title">Basic BREVET A & B Training</h4>
+                    <p class="certificate-issuer">Bina Muda Inspira Training Center</p>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in" onclick="openLightbox(1)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1hTaZf4YGrwcfLbH5U3-hptS2XtmR5eKt" alt="Audit Workshop" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">2025</div>
+                    <h4 class="certificate-title">Basic Audit Technique Workshop</h4>
+                    <p class="certificate-issuer">Ioda Academy</p>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in" onclick="openLightbox(2)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1nesnmrZZ8u4iAh-7nBhHzPX58dJJ2Nr_" alt="Yale Course" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">2024</div>
+                    <h4 class="certificate-title">Financial Markets Course</h4>
+                    <p class="certificate-issuer">Yale University (Coursera)</p>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in" onclick="openLightbox(3)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/142lgPSGEWeEw4fbbP9Yl76B4oX1sO_8o" alt="OSSN Medal" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">2024</div>
+                    <h4 class="certificate-title">Silver Medalist - OSSN</h4>
+                    <p class="certificate-issuer">National Science & Statistics Olympiad</p>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in" onclick="openLightbox(4)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1TMVY3U6Cs63j5dAip7paCsyxvFXX772w" alt="Tax Competition" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">October 2025</div>
+                    <h4 class="certificate-title">Semi Finalist - Tax Competition 2025</h4>
+                    <p class="certificate-issuer">Universitas Dharma Andalas</p>
+                </div>
+            </div>
+
+            <div class="certificate-card fade-in" onclick="openLightbox(5)">
+                <div class="certificate-image-wrapper">
+                    <img src="https://lh3.googleusercontent.com/d/1PbdlsrylzKfjWlySBFpQQOBRY3tP_VIL" alt="Volunteer" class="certificate-image">
+                    <div class="certificate-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-date">2024</div>
+                    <h4 class="certificate-title">Campus Volunteer & Peer Tutor</h4>
+                    <p class="certificate-issuer">UBSI & LPPM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img src="" alt="Certificate" class="lightbox-image" id="lightbox-img">
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightbox-title"></h3>
+                <p class="lightbox-issuer" id="lightbox-issuer"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Achievements List -->
+    <section class="achievements-list">
+        <div class="section-header fade-in">
+            <span class="section-tag">Other</span>
+            <h2 class="section-title" style="font-size: 2rem;">Additional Achievements</h2>
+        </div>
+        <div class="achievements-container">
+            <div class="achievement-item fade-in">
+                <div class="achievement-icon-small">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="achievement-content">
+                    <div class="date">2025</div>
+                    <h4>Certified Fundamental Tax Reporting (CFTR)</h4>
+                    <p>.</p>Completed certification in Taxation fundamentals, reporting, and compliance.</p>
+                </div>
+            </div>
+            <div class="achievement-item fade-in">
+                <div class="achievement-icon-small" style="background: var(--accent-orange);">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="achievement-content">
+                    <div class="date">2025</div>
+                    <h4>Author book Zahir Accounting 6</h4>
+                    <p>Contributed as an author to a practical guide on Zahir Accounting, focusing on accounting system usage and implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section dengan Link Aktif -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h2>My Contact</h2>
+                <p>Feel free to connect with me for collaboration, opportunities, or simply to say hello.</p>
+                
+                <div class="contact-methods">
+                    <!-- LINKEDIN - Langsung ke profil -->
+                    <a href="https://www.linkedin.com/in/-yohanes12" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>Yohanes Cantus Firmus Luahambowo</p>
+                        </div>
+                    </a>
+
+                    <!-- WHATSAPP - Langsung chat -->
+                    <a href="https://wa.me/6282375586945" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>0823-7558-6945</p>
+                        </div>
+                    </a>
+
+                    <!-- EMAIL - Langsung compose -->
+                    <a href="mailto:yohanescantus@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>yohanescantus@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form fade-in">
+                <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send Message</h3>
+                <form onsubmit="event.preventDefault(); alert('Message sent!');">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer dengan Link Aktif -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/-yohanes12" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:yohanescantus@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/6282375586945" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="footer-text">
+                &copy; 2026 Yohanes Cantus Firmus Luahambowo. All rights reserved.<br>
+                Accountant | Audit & Financial System Enthusiast
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Data sertifikat untuk lightbox
+        const certificates = [
+            {
+                src: 'https://lh3.googleusercontent.com/d/1pVAyDsFAXNCIg6wCSDWO_xTGeGLp0-2s',
+                title: 'Basic BREVET A & B Training',
+                issuer: 'Bina Muda Inspira Training Center (2025)'
+            },
+            {
+                src: 'https://lh3.googleusercontent.com/d/1hTaZf4YGrwcfLbH5U3-hptS2XtmR5eKt',
+                title: 'Basic Audit Technique Workshop',
+                issuer: 'Ioda Academy (2025)'
+            },
+            {
+                src: 'https://lh3.googleusercontent.com/d/1nesnmrZZ8u4iAh-7nBhHzPX58dJJ2Nr_',
+                title: 'Financial Markets Course',
+                issuer: 'Yale University - Coursera (2024)'
+            },
+            {
+                src: 'https://lh3.googleusercontent.com/d/142lgPSGEWeEw4fbbP9Yl76B4oX1sO_8o',
+                title: 'Silver Medalist - OSSN',
+                issuer: 'National Science & Statistics Olympiad (2019-2024)'
+            },
+            {
+                src: 'https://lh3.googleusercontent.com/d/1TMVY3U6Cs63j5dAip7paCsyxvFXX772w',
+                title: 'Semi Finalist - Tax Competition 2025',
+                issuer: 'Universitas Dharma Andalas (October 2025)'
+            },
+            {
+                src: 'https://lh3.googleusercontent.com/d/1PbdlsrylzKfjWlySBFpQQOBRY3tP_VIL',
+                title: 'Campus Volunteer & Peer Tutor',
+                issuer: 'UBSI & LPPM (2024)'
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const issuer = document.getElementById('lightbox-issuer');
+            
+            img.src = certificates[index].src;
+            title.textContent = certificates[index].title;
+            issuer.textContent = certificates[index].issuer;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= certificates.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = certificates.length - 1;
+            }
+            
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const issuer = document.getElementById('lightbox-issuer');
+            
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = certificates[currentImageIndex].src;
+                title.textContent = certificates[currentImageIndex].title;
+                issuer.textContent = certificates[currentImageIndex].issuer;
+                img.style.opacity = '1';
+            }, 200);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            alert('Mobile menu - Please use desktop for best experience or implement mobile menu overlay');
+        });
+    </script>
+</body>
+</html>
