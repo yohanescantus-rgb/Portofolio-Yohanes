@@ -393,7 +393,6 @@
             position: relative;
         }
 
-        /* FOTO ABOUT - object-position: bottom */
         .about-image-container {
             position: relative;
             border-radius: 20px;
@@ -563,7 +562,6 @@
             transform: translateY(-5px);
         }
 
-        /* TIMELINE IMAGE - NORMAL (tanpa object-position) */
         .timeline-image {
             width: 100%;
             height: 250px;
@@ -1114,7 +1112,6 @@
             gap: 1.5rem;
         }
 
-        /* Contact Item dengan Link Aktif */
         .contact-item {
             display: flex;
             align-items: center;
@@ -1203,6 +1200,202 @@
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
+        }
+
+        /* THANKS PAGE OVERLAY - TANPA FILE TERPISAH */
+        .thanks-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .thanks-overlay.active {
+            display: flex;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .thanks-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thanks-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-orange), #fb923c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .thanks-icon i {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .thanks-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .thanks-title span {
+            color: var(--accent-orange);
+        }
+
+        .thanks-message {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .thanks-message strong {
+            color: white;
+        }
+
+        .thanks-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-orange));
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        .thanks-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .thanks-info h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .thanks-info p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-back-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
+            background: #1e40af;
+        }
+
+        .thanks-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .thanks-social a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .thanks-social a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-orange);
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #f97316; }
+        .confetti:nth-child(2) { left: 20%; animation-delay: 0.5s; background: #1e3a8a; }
+        .confetti:nth-child(3) { left: 30%; animation-delay: 1s; background: #f97316; }
+        .confetti:nth-child(4) { left: 40%; animation-delay: 1.5s; background: #1e40af; }
+        .confetti:nth-child(5) { left: 50%; animation-delay: 0.3s; background: #fb923c; }
+        .confetti:nth-child(6) { left: 60%; animation-delay: 0.8s; background: #1e3a8a; }
+        .confetti:nth-child(7) { left: 70%; animation-delay: 1.2s; background: #f97316; }
+        .confetti:nth-child(8) { left: 80%; animation-delay: 1.7s; background: #1e40af; }
+        .confetti:nth-child(9) { left: 90%; animation-delay: 0.2s; background: #fb923c; }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* Footer */
@@ -1338,6 +1531,19 @@
             .achievement-item {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .thanks-title {
+                font-size: 2rem;
+            }
+
+            .thanks-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .thanks-icon i {
+                font-size: 2.5rem;
             }
         }
 
@@ -1475,7 +1681,6 @@
             </div>
             <div class="about-image fade-in">
                 <div class="about-image-container">
-                    <!-- FOTO ABOUT - object-position: bottom -->
                     <img src="https://lh3.googleusercontent.com/d/1LWGu-C5AFKlQQfbcJwmjmQwlICxSTLwh" alt="About Yohanes">
                 </div>
                 <div class="experience-badge">
@@ -1529,7 +1734,7 @@
         </div>
         
         <div class="timeline">
-            <!-- KOPKAR PRA - FOTO TERBARU & NORMAL -->
+            <!-- KOPKAR PRA -->
             <div class="timeline-item fade-in">
                 <div class="timeline-content">
                     <img src="https://lh3.googleusercontent.com/d/1uufTokA5qM1F0FII0khkj6CuXEO8Bw9U" alt="KOPKAR PRA" class="timeline-image">
@@ -1551,7 +1756,7 @@
                 <div class="timeline-dot"></div>
             </div>
 
-            <!-- KAP A & H - FOTO NORMAL -->
+            <!-- KAP A & H -->
             <div class="timeline-item fade-in">
                 <div class="timeline-content">
                     <img src="https://lh3.googleusercontent.com/d/1uZbPczZe0RGduyUy10foLzUSOleSOvB7" alt="KAP A&H" class="timeline-image">
@@ -1875,7 +2080,7 @@
                 <div class="achievement-content">
                     <div class="date">2025</div>
                     <h4>Certified Fundamental Tax Reporting (CFTR)</h4>
-                    <p>.</p>Completed certification in Taxation fundamentals, reporting, and compliance.</p>
+                    <p>Completed certification in Taxation fundamentals, reporting, and compliance.</p>
                 </div>
             </div>
             <div class="achievement-item fade-in">
@@ -1891,7 +2096,7 @@
         </div>
     </section>
 
-    <!-- Contact Section dengan Link Aktif -->
+    <!-- Contact Section dengan Formspree Form yang Sudah Dioptimalkan -->
     <section class="contact" id="contact">
         <div class="contact-container">
             <div class="contact-info fade-in">
@@ -1899,7 +2104,7 @@
                 <p>Feel free to connect with me for collaboration, opportunities, or simply to say hello.</p>
                 
                 <div class="contact-methods">
-                    <!-- LINKEDIN - Langsung ke profil -->
+                    <!-- LINKEDIN -->
                     <a href="https://www.linkedin.com/in/-yohanes12" target="_blank" class="contact-item">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin-in"></i>
@@ -1910,7 +2115,7 @@
                         </div>
                     </a>
 
-                    <!-- WHATSAPP - Langsung chat -->
+                    <!-- WHATSAPP -->
                     <a href="https://wa.me/6282375586945" target="_blank" class="contact-item">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
@@ -1921,7 +2126,7 @@
                         </div>
                     </a>
 
-                    <!-- EMAIL - Langsung compose -->
+                    <!-- EMAIL -->
                     <a href="mailto:yohanescantus@gmail.com" class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
@@ -1933,41 +2138,48 @@
                     </a>
                 </div>
             </div>
-<!-- VERSI BARU - Langsung ke email yohanescantus@gmail.com -->
-<div class="contact-form fade-in">
-    <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send Message</h3>
-    <form action="https://formspree.io/f/mgoljrpg" method="POST">
-        <!-- Subject email yang akan muncul di inbox Anda -->
-        <input type="hidden" name="_subject" value="📩 Pesan Baru dari Website Portfolio - yohanescantus@gmail.com">
-        
-        <!-- Auto reply-to pengirim (bisa reply langsung ke email mereka) -->
-        <input type="hidden" name="_replyto">
-        
-        <!-- Anti spam bot -->
-        <input type="text" name="_gotcha" style="display:none">
-        
-        <!-- Redirect setelah kirim (opsional - ganti dengan URL thank you page Anda) -->
-        <input type="hidden" name="_next" value="https://yohanesluahambowo.github.io/thanks.html">
-        
-        <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" name="name" placeholder="Enter your name" required>
-        </div>
-        <div class="form-group">
-            <label>Your Email</label>
-            <input type="email" name="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" placeholder="Write your message..." required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-    </form>
-</div>
 
-    <!-- Footer dengan Link Aktif -->
+            <!-- FORM CONTACT - FORMSPREE OPTIMIZED -->
+            <div class="contact-form fade-in">
+                <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send Message</h3>
+                <form 
+                    action="https://formspree.io/f/mgoljrpg" 
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="contactForm"
+                >
+                    <!-- Subject email yang akan muncul di inbox Anda -->
+                    <input type="hidden" name="_subject" value="📩 Pesan Baru dari Website Portfolio">
+                    
+                    <!-- Honeypot anti-spam -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        input type="text" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                
+                <!-- Note kecil di bawah form -->
+                <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 1rem; text-align: center;">
+                    <i class="fas fa-shield-alt"></i> Your message will be sent securely to yohanescantus@gmail.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -1982,6 +2194,57 @@
             </p>
         </div>
     </footer>
+
+    <!-- THANKS PAGE OVERLAY - TANPA FILE TERPISAH -->
+    <div class="thanks-overlay" id="thanksOverlay">
+        <!-- Confetti Animation -->
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <div class="thanks-container">
+            <div class="thanks-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1 class="thanks-title">Message <span>Sent!</span></h1>
+            
+            <p class="thanks-message">
+                Thank you for reaching out! Your message has been successfully delivered to my inbox. 
+                <br><br>
+                I appreciate you taking the time to contact me and will get back to you as soon as possible — typically within <strong>24-48 hours</strong>.
+            </p>
+            
+            <div class="thanks-divider"></div>
+            
+            <div class="thanks-info">
+                <h3><i class="fas fa-envelope-open-text"></i> What's Next?</h3>
+                <p>While waiting for my response, feel free to explore more about my work or connect with me on social media. I'm always open to discussing new opportunities, collaborations, or just having a friendly conversation about accounting and finance!</p>
+            </div>
+            
+            <button class="btn-back-home" onclick="closeThanksPage()">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </button>
+            
+            <div class="thanks-social">
+                <a href="https://www.linkedin.com/in/-yohanes12" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:yohanescantus@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/6282375586945" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Data sertifikat untuk lightbox
@@ -2113,7 +2376,40 @@
         document.querySelector('.mobile-menu').addEventListener('click', () => {
             alert('Mobile menu - Please use desktop for best experience or implement mobile menu overlay');
         });
+
+        // FORM HANDLING - SHOW THANKS PAGE AFTER SUBMIT
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Form akan tetap submit ke Formspree
+            // Tapi kita tampilkan thanks page overlay setelahnya
+            setTimeout(() => {
+                showThanksPage();
+            }, 500);
+        });
+
+        function showThanksPage() {
+            const thanksOverlay = document.getElementById('thanksOverlay');
+            thanksOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+
+        function closeThanksPage() {
+            const thanksOverlay = document.getElementById('thanksOverlay');
+            thanksOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close thanks page with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const thanksOverlay = document.getElementById('thanksOverlay');
+                if (thanksOverlay.classList.contains('active')) {
+                    closeThanksPage();
+                }
+            }
+        });
     </script>
 </body>
 </html>
-
