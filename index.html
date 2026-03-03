@@ -1933,29 +1933,39 @@
                     </a>
                 </div>
             </div>
-
-            <div class="contact-form fade-in">
-                <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send Message</h3>
-                <form onsubmit="event.preventDefault(); alert('Message sent!');">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Email</label>
-                        <input type="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="Write your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-            </div>
+<!-- VERSI BARU - Langsung ke email yohanescantus@gmail.com -->
+<div class="contact-form fade-in">
+    <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Send Message</h3>
+    <form action="https://formspree.io/f/mgoljrpg" method="POST">
+        <!-- Subject email yang akan muncul di inbox Anda -->
+        <input type="hidden" name="_subject" value="📩 Pesan Baru dari Website Portfolio - yohanescantus@gmail.com">
+        
+        <!-- Auto reply-to pengirim (bisa reply langsung ke email mereka) -->
+        <input type="hidden" name="_replyto">
+        
+        <!-- Anti spam bot -->
+        <input type="text" name="_gotcha" style="display:none">
+        
+        <!-- Redirect setelah kirim (opsional - ganti dengan URL thank you page Anda) -->
+        <input type="hidden" name="_next" value="https://yohanesluahambowo.github.io/thanks.html">
+        
+        <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
         </div>
-    </section>
+        <div class="form-group">
+            <label>Your Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Write your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+    </form>
+</div>
 
     <!-- Footer dengan Link Aktif -->
     <footer>
@@ -2106,3 +2116,4 @@
     </script>
 </body>
 </html>
+
