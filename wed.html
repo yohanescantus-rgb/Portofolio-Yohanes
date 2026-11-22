@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding of Meylius &amp; Listra</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream:#f8f3eb;
+  --gold:#b39561;
+  --dark:#443c32;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Montserrat',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:var(--sans);font-weight:300}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+section{padding:85px 20px;text-align:center}
+.wrap{max-width:900px;margin:auto}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+h2{font:500 clamp(42px,8vw,65px)/1 var(--serif);margin:15px 0}
+p{font-size:13px;line-height:2;color:#81786c}
+.ornament{color:var(--gold);letter-spacing:8px;margin:20px}
+.btn{padding:13px 24px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:.3s}
+.btn:hover{background:var(--gold);color:white}
+.btn.gold{background:var(--gold);color:white}
+
+/* COVER: POSISI FOTO DINAIKKAN AGAR FULL BODY KELIHATAN */
+.cover{
+ min-height:100vh;display:grid;place-items:center;
+ position:relative;color:white;text-align:center;
+ background:linear-gradient(#241e1b4d,#241e1b9e),
+ url("https://drive.google.com/thumbnail?id=1T4tQTHBcohDWK1DIYX2l3yyWft8t-K9y&sz=w1600") center top/cover no-repeat;
+ padding:35px 20px;overflow:hidden
+}
+.cover:after{content:"";position:absolute;inset:18px;border:1px solid #ffffff88;pointer-events:none}
+.cover-content{position:relative;z-index:1;animation:appear 1.5s ease both;max-width:560px;margin-top:20px}
+.cover .eyebrow{color:#f5dfb8}
+.cover h1{font:500 clamp(60px,11vw,104px)/.82 var(--serif);margin:20px 0}
+.cover h1 span{display:block;font-size:.48em;margin:14px;color:#e7cb9c}
+.cover-date{letter-spacing:5px;font-size:11px}
+.cover .btn{color:white;border-color:white;margin-top:22px}
+.cover .btn:hover{background:white;color:#333}
+.cover-note{color:white}
+.guest-pill{
+ margin:16px auto 4px;padding:12px 20px;
+ border:1px solid #ffffff66;background:#1e181373;
+ backdrop-filter:blur(6px);display:inline-block;min-width:240px
+}
+.guest-pill small{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#f5dfb8;margin-bottom:4px}
+.guest-pill strong{font:500 22px/1.2 var(--serif);color:#fff;letter-spacing:1px}
+
+/* GENERAL & PENYESUAIAN UKURAN FOTO */
+.reveal{opacity:0;transform:translateY(35px);transition:1s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.photo{
+ width:100%;max-width:560px;aspect-ratio:4/5;
+ object-fit:cover;object-position:center top;
+ margin:28px auto;
+ box-shadow:12px 14px 0 #b3956122;
+ transition:transform .8s,filter .8s
+}
+.photo:hover{transform:scale(1.02);filter:brightness(.95)}
+.intro{background:#fffaf3}
+.quote{font:italic 25px/1.5 var(--serif);color:#987b4d;max-width:650px;margin:25px auto}
+.couple{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:40px}
+.person img{
+ width:100%;max-width:380px;aspect-ratio:3/4;
+ object-fit:cover;object-position:center top;
+ margin:0 auto 20px;
+ box-shadow:10px 12px 0 #b3956122
+}
+.person h3{font:500 43px/1 var(--serif);margin:10px}
+.story{background:#eee5d8}
+.story img{max-width:540px;aspect-ratio:4/5;object-fit:cover;object-position:center top;margin:30px auto}
+.story-card{
+ max-width:660px;margin:30px auto 0;padding:34px 28px;
+ background:#fffaf3;border:1px solid #d9c7a5;text-align:center
+}
+.story-card h3{
+ font:500 clamp(28px,5vw,38px)/1.2 var(--serif);
+ color:var(--dark);margin:0 0 18px
+}
+.story-card p{
+ margin:0 0 16px;color:#6c6256;font-size:13.5px;line-height:2.05
+}
+.story-card p:last-child{margin-bottom:0;font-weight:400;color:#5a4d3c}
+.event{background:#fffaf3;border:1px solid #d9c7a5;padding:35px 20px;margin:30px auto;max-width:650px}
+.event h3{font:40px var(--serif)}
+.event-grid{display:flex;justify-content:center;gap:35px;margin:25px}
+.event-grid strong{display:block;font:32px var(--serif);color:var(--gold)}
+.event-grid span{font-size:9px;letter-spacing:2px}
+.countdown{display:flex;justify-content:center;gap:10px;margin:25px}
+.countdown div{border:1px solid #d9c7a5;padding:12px;min-width:60px}
+.countdown strong{display:block;font:27px var(--serif);color:var(--gold)}
+.countdown span{font-size:9px}
+.gallery{background:#fffaf3}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:35px}
+.gallery-grid img{
+ width:100%;aspect-ratio:4/5;
+ object-fit:cover;object-position:center top;
+ cursor:pointer;transition:.5s
+}
+.gallery-grid img:hover{transform:scale(1.03)}
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:30px}
+.gift{border:1px solid #d9c7a5;padding:25px;background:#fffaf3}
+.gift h3{font:30px var(--serif)}
+.gift-number{color:var(--gold);letter-spacing:2px;font-size:16px;overflow-wrap:anywhere;margin:8px 0}
+.rsvp{background:#eee5d8}
+form{max-width:480px;margin:30px auto;text-align:left}
+label{display:block;font-size:11px;margin:15px 0 6px;color:#8b744e}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d9c7a5;background:#fffaf3;font:12px var(--sans)}
+form button{width:100%;margin-top:20px}
+footer{text-align:center;padding:25px;font-size:10px;letter-spacing:2px;color:#8b806f}
+.music{
+ position:fixed;right:20px;bottom:20px;z-index:10;
+ width:48px;height:48px;border-radius:50%;
+ border:1px solid var(--gold);background:#fffaf3;color:var(--gold);
+ display:none;font-size:18px;box-shadow:0 6px 20px #241e1b26
+}
+.music.show{display:grid;place-items:center}
+.lightbox{display:none;position:fixed;inset:0;background:#17130fee;z-index:30;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-height:90vh;max-width:95vw;object-fit:contain}
+.lightbox button{position:absolute;right:20px;top:10px;color:white;background:none;border:0;font-size:35px}
+.toast{
+ position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);z-index:40;
+ background:var(--dark);color:#fffaf3;padding:11px 20px;
+ border:1px solid var(--gold);font-size:11px;letter-spacing:1px;
+ opacity:0;pointer-events:none;transition:.3s;text-align:center;max-width:90vw
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes appear{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){
+ section{padding:65px 18px}
+ .couple,.gifts{grid-template-columns:1fr}
+ .person img{max-width:340px;aspect-ratio:3/4}
+ .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+ .event-grid{gap:15px}
+ .countdown{gap:5px}
+ .countdown div{min-width:53px;padding:8px 3px}
+ .photo,.story img{max-width:100%}
+ .story-card{padding:26px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body class="locked">
+
+<!-- COVER / FOTO AWAL SEBELUM BUKA UNDANGAN -->
+<header class="cover" id="cover">
+ <div class="cover-content">
+  <div class="eyebrow">The Wedding Celebration Of</div>
+  <h1>Meylius <span>&amp;</span> Listra</h1>
+  <div class="cover-date">28 DECEMBER 2026</div>
+  <div class="guest-pill">
+   <small>Kepada Yth. Bapak/Ibu/Saudara/i</small>
+   <strong id="guestName">Tamu Undangan</strong>
+  </div>
+  <p class="cover-note">Together with our families, we invite you to celebrate our special day.</p>
+  <button class="btn" id="open" type="button">✧ Buka Undangan ✧</button>
+ </div>
+</header>
+
+<main id="content">
+
+<!-- INTRO -->
+<section class="intro">
+ <div class="wrap reveal">
+  <div class="eyebrow">A Promise Of Love</div>
+  <div class="ornament">✦ ✧ ✦</div>
+  <div class="quote">“Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”</div>
+  <p>Matius 19:6</p>
+  <img class="photo drive-photo" data-id="1sg5lqZIhO8jxphRw_Rc5qhvZFc_FJVZt" alt="Foto Nikah Awal Meylius dan Listra">
+  <p>Dengan penuh rasa syukur kepada Tuhan, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada pernikahan kami.</p>
+ </div>
+</section>
+
+<!-- MEMPELAI -->
+<section>
+ <div class="wrap reveal">
+  <div class="eyebrow">The Bride &amp; The Groom</div>
+  <h2>Meet The Couple</h2>
+  <div class="couple">
+   <div class="person">
+    <img class="drive-photo" data-id="1yTktbMOoQjpiZLs9Ep4bYhhCb-RUJzoE" alt="Meylius Galeh Raharto">
+    <div class="eyebrow">The Groom</div>
+    <h3>Meylius Galeh Raharto</h3>
+    <p>Putra dari<br><b>Kornelius Djoko Suharto</b><br>&amp; Debora Rasnawati</p>
+   </div>
+   <div class="person">
+    <img class="drive-photo" data-id="1w2M-x7qMiBSRLp0cC0GUgzjZ-vAfIDC5" alt="Listra Luahambowo">
+    <div class="eyebrow">The Bride</div>
+    <h3>Listra Luahambowo</h3>
+    <p>Putri dari<br><b>Fa'ahakhododo Luahambowo</b><br>&amp; Satiani Sarumaha</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- LOVE STORY -->
+<section class="story">
+ <div class="wrap reveal">
+  <div class="eyebrow">Our Love Story</div>
+  <h2>Two Hearts, One Story</h2>
+  <div class="ornament">— ✧ —</div>
+  <img class="photo drive-photo" data-id="1L5NmHkNJuVoveW7mStJ1qffaBGLa17_s" alt="Love Story Meylius dan Listra">
+  <div class="story-card">
+   <h3>Dari Pertemuan Menjadi Satu Tujuan.</h3>
+   <p>Semua berawal dari sebuah malam yang sederhana, ketika kita dipertemukan dalam acara Pemuda dan Pemudi di Gereja. Tak pernah terbayangkan sebelumnya bahwa pertemuan malam itu akan menjadi awal dari sebuah kisah yang begitu berarti.</p>
+   <p>Berawal dari sapaan sederhana, percakapan kecil, hingga perlahan tumbuh rasa nyaman yang membawa kita semakin dekat. Waktu demi waktu mengajarkan kita arti mengenal, memahami, menerima, dan saling menguatkan dalam setiap keadaan.</p>
+   <p>Perjalanan ini tentu tidak selalu mudah. Selama 6 tahun kita saling mengenal dan belajar bersama, tentu ada suka dan duka, tawa dan air mata, tetapi kita memilih untuk tetap berjalan bersama, saling menggenggam, dan percaya bahwa setiap langkah memiliki tujuan.</p>
+   <p>Hingga akhirnya, kita menyadari bahwa cinta bukan hanya tentang menemukan seseorang yang tepat, tetapi juga tentang memutuskan untuk terus bersama dalam setiap musim kehidupan.</p>
+   <p>Dari pertemuan di rumah Tuhan, kini kita melangkah menuju janji suci di hadapan Tuhan.</p>
+   <p>Dengan penuh rasa syukur, kami ingin membagikan hari pernikahan kami yang penuh dengan sukacita ini kepada keluarga dan sahabat terkasih.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ACARA -->
+<section>
+ <div class="wrap reveal">
+  <div class="eyebrow">Save The Date</div>
+  <h2>The Wedding Day</h2>
+  <div class="event">
+   <div class="ornament">✦</div>
+   <h3>Pemberkatan Pernikahan</h3>
+   <p>Senin, 28 Desember 2026</p>
+   <div class="event-grid">
+    <div><strong>28</strong><span>DECEMBER</span></div>
+    <div><strong>10.00</strong><span>WIB</span></div>
+    <div><strong>2026</strong><span>YEAR</span></div>
+   </div>
+   <div class="eyebrow">Counting The Days</div>
+   <div class="countdown">
+    <div><strong id="days">00</strong><span>Hari</span></div>
+    <div><strong id="hours">00</strong><span>Jam</span></div>
+    <div><strong id="minutes">00</strong><span>Menit</span></div>
+    <div><strong id="seconds">00</strong><span>Detik</span></div>
+   </div>
+   <div class="ornament">— ✧ —</div>
+   <p><b>GPdI El-Shaddai Jababeka II</b><br>Ruko Food Promenade CBP Unit 8G,<br>Kawasan Industri Jababeka II, Cikarang, Bekasi.</p>
+   <a class="btn gold" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=GPdI+El-Shaddai+Jababeka+II+Ruko+Food+Promenade+CBP+Unit+8G">Lihat Lokasi</a>
+   <a class="btn" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Meylius+%26+Listra&dates=20261228T030000Z/20261228T050000Z">Simpan Tanggal</a>
+  </div>
+ </div>
+</section>
+
+<!-- GALERI (12 FOTO DARI FOLDER GOOGLE DRIVE) -->
+<section class="gallery">
+ <div class="wrap reveal">
+  <div class="eyebrow">Captured Moments</div>
+  <h2>Our Gallery</h2>
+  <p>Beautiful moments, forever memories.</p>
+  <div class="gallery-grid" id="gallery">
+   <img class="drive-photo" data-id="1T4tQTHBcohDWK1DIYX2l3yyWft8t-K9y" alt="Foto Galeri 1">
+   <img class="drive-photo" data-id="1sg5lqZIhO8jxphRw_Rc5qhvZFc_FJVZt" alt="Foto Galeri 2">
+   <img class="drive-photo" data-id="1yTktbMOoQjpiZLs9Ep4bYhhCb-RUJzoE" alt="Foto Galeri 3">
+   <img class="drive-photo" data-id="1w2M-x7qMiBSRLp0cC0GUgzjZ-vAfIDC5" alt="Foto Galeri 4">
+   <img class="drive-photo" data-id="1L5NmHkNJuVoveW7mStJ1qffaBGLa17_s" alt="Foto Galeri 5">
+   <img class="drive-photo" data-id="1XQTBI8PQh4ioWOeFNX5gXUSlHOEmwb8J" alt="Foto Galeri 6">
+   <img class="drive-photo" data-id="1MhqNFgmeH5tLKAlSbGyjxAQ1LmtnOEvz" alt="Foto Galeri 7">
+   <img class="drive-photo" data-id="1E4sq8rNQu-taNxqz5NorfP2ocIqaoCg9" alt="Foto Galeri 8">
+   <img class="drive-photo" data-id="1ZDCv11MElCsedOvQrH-EquxEJxT4fMp9" alt="Foto Galeri 9">
+   <img class="drive-photo" data-id="1m7kPtBc52Cz5iLo391iJUjyhkIqEoSUG" alt="Foto Galeri 10">
+   <img class="drive-photo" data-id="1QHtGvVbeJwEFfMNa0YonLXZA-1PX0YhB" alt="Foto Galeri 11">
+   <img class="drive-photo" data-id="1L7xMtLw8fA5Y3vj_
